@@ -1,9 +1,10 @@
-exports.handler = async function() {
-
+exports.handler = async function(event, context) {
+const eventBody = JSON.parse(event.body)
+console.log(event)
     return{
         statusCode : 200,
         body:JSON.stringify({
-            message:"Hello world"
+            message: eventBody.reg
         })
     }
 }

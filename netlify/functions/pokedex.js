@@ -1,6 +1,6 @@
 const fetch = require('node-fetch');
 
-exports.handler =  async () => {
+exports.handler =  async (event, context) => {
     const Poke_Api = "https://pokeapi.co/api/v2/pokedex/kanto"
     const response = await fetch(Poke_Api)
     const data = await  response.json()
