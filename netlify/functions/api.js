@@ -2,14 +2,19 @@ const express = require("express")
 const serverless = require("serverless-http")
 const router =  express.Router()
 const app = express();
+const engine = require('ejs-mate');
 const fetch = require('node-fetch');
 const path = require('path');
 console.log(path)
 const ejs = require('ejs');
+
+app.engine('ejs', engine);
+
 let people = ['geddy', 'neil', 'alex'];
 
 app.use(express.static( "./public"))
 
+// app.set('views', __dirname + '../views');
 app.set('view engine', 'ejs');
 
 router.get("/", async  (req, res)=>{
@@ -21,7 +26,7 @@ router.get("/", async  (req, res)=>{
         })
         const data = await response.json()
         // 
-        res.render("../views/index", {people:data})
+        res.render("index.ejs", {people:data})
     }catch (error) {console.log(error)}
 
 
