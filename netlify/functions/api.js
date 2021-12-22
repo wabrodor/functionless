@@ -4,11 +4,12 @@ const router =  express.Router()
 const app = express();
 const fetch = require('node-fetch');
 const path = require('path');
+console.log(path)
 const ejs = require('ejs');
 let people = ['geddy', 'neil', 'alex'];
 
 app.use(express.static( "./public"))
-app.set('/var/task/views',  path.join(__dirname, "views")); 
+
 app.set('view engine', 'ejs');
 
 router.get("/", async  (req, res)=>{
@@ -19,7 +20,8 @@ router.get("/", async  (req, res)=>{
             }
         })
         const data = await response.json()
-        res.render("index.ejs", {people:data})
+        // 
+        res.render("../views/index", {people:data})
     }catch (error) {console.log(error)}
 
 
