@@ -8,7 +8,7 @@ const ejs = require('ejs');
 let people = ['geddy', 'neil', 'alex'];
 
 app.use(express.static( "./public"))
-app.set('./views',  path.join(__dirname, "../views")); 
+app.set('../views',  path.join(__dirname, "views")); 
 app.set('view engine', 'ejs');
 
 router.get("/", async  (req, res)=>{
@@ -19,7 +19,6 @@ router.get("/", async  (req, res)=>{
             }
         })
         const data = await response.json()
-        console.log(data)
         res.render("index.ejs", {people:data})
     }catch (error) {console.log(error)}
 
